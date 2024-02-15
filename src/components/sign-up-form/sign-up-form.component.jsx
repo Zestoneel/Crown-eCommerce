@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase/firebase.utils';
 
+import Button from '../button/button.component';
+
 const defaultformFields = {
-    displayName: "",
-    email: "",
-    password: "",
-    confirmPassword: ""
+    displayName: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
 }
 
 import FormInput from '../form-input/form-input.component';
@@ -34,10 +36,10 @@ const SignUpForm = () => {
             await createUserDocumentFromAuth(user, { displayName });
             resetFormFields();
         } catch(error) {
-            if(error.code === "auth/email-already-in-use") {
-                alert("Cannot create user, email alredy in use");
+            if(error.code === 'auth/email-already-in-use') {
+                alert('Cannot create user, email alredy in use');
             } else {
-                console.log("User creation encountered an error.", error);
+                console.log('User creation encountered an error.', error);
             }
         }
     }   
@@ -50,54 +52,54 @@ const SignUpForm = () => {
 
     return (
         <div className='sign-up-container'>
-            <h2>Don't have an account?</h2>
+            <h2>Don&apos;t have an account?</h2>
             <span>Sign up with your email and password</span>
             <form onSubmit={handleSubmit}>
                 <FormInput 
-                    label="Display Name"
+                    label='Display Name'
                     inputOptions = {{
-                        type: "text",
+                        type: 'text',
                         required: true,
                         onChange: handleChange,
-                        name: "displayName",
+                        name: 'displayName',
                         value: displayName,
                     }}
                 />
 
                 <FormInput 
-                    label="Email"
+                    label='Email'
                     inputOptions = {{
-                        type: "email",
+                        type: 'email',
                         required: true,
                         onChange: handleChange,
-                        name: "email",
+                        name: 'email',
                         value: email,
                     }}
                 />
 
                 <FormInput 
-                    label="Password"
+                    label='Password'
                     inputOptions = {{
-                        type: "password",
+                        type: 'password',
                         required: true,
                         onChange: handleChange,
-                        name: "password",
+                        name: 'password',
                         value: password,
                     }}
                 />
 
                 <FormInput 
-                    label="Confirm Password"
+                    label='Confirm Password'
                     inputOptions = {{
-                        type: "password",
+                        type: 'password',
                         required: true,
                         onChange: handleChange,
-                        name: "confirmPassword",
+                        name: 'confirmPassword',
                         value: confirmPassword,
                     }}
                 />
 
-                <button type="Submit">Sign Up</button>
+                <Button buttonType='submit'>Sign Up</Button>
             </form>
         </div>
     );

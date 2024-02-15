@@ -8,12 +8,12 @@ import {
 } from 'firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCBPC5CHo1Tm5ZiRBvGNdgUwNhle6WCduo",
-  authDomain: "crown-clothing-db-89ae8.firebaseapp.com",
-  projectId: "crown-clothing-db-89ae8",
-  storageBucket: "crown-clothing-db-89ae8.appspot.com",
-  messagingSenderId: "852619725522",
-  appId: "1:852619725522:web:95a0bdae239036ad40fb0b"
+  apiKey: 'AIzaSyCBPC5CHo1Tm5ZiRBvGNdgUwNhle6WCduo',
+  authDomain: 'crown-clothing-db-89ae8.firebaseapp.com',
+  projectId: 'crown-clothing-db-89ae8',
+  storageBucket: 'crown-clothing-db-89ae8.appspot.com',
+  messagingSenderId: '852619725522',
+  appId: '1:852619725522:web:95a0bdae239036ad40fb0b'
 };
 
 
@@ -24,7 +24,7 @@ const firebaseApp = initializeApp(firebaseConfig);
 
 const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({
-    prompt: "select_account"
+    prompt: 'select_account'
 });
 
 export const auth = getAuth();
