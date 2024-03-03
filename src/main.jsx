@@ -1,23 +1,26 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from './store/store.js';
 
-import App from './App.jsx'
-import { UserProvider } from './context/user.context';
-import './index.scss'
+import App from './App.jsx';
+import './index.scss';
 import { CategoriesProvider } from './context/categories.context.jsx';
 import { CartProvider } from './context/cart.context.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <UserProvider>
+    <Provider store={store}>
+      <BrowserRouter>
+        {/* <UserProvider> */}
         <CategoriesProvider>
           <CartProvider>
             <App />
           </CartProvider>
         </CategoriesProvider>
-      </UserProvider>
-    </BrowserRouter>
-  </React.StrictMode>,
-)
+        {/* </UserProvider> */}
+      </BrowserRouter>
+    </Provider>
+  </React.StrictMode>
+);

@@ -1,5 +1,5 @@
-import { createContext, useReducer } from "react";
-import { createAction } from "../utils/reducer/reducer.utils";
+import { createContext, useReducer } from 'react';
+import { createAction } from '../utils/reducer/reducer.utils';
 
 const addCardItem = (cartItems, productToAdd) => {
   // find if cartItems contains productToAdd
@@ -38,10 +38,10 @@ const removeProduct = (cartItems, productToRemove) => {
 };
 
 const CART_ACTION_TYPES = {
-  SET_IS_CART_OPEN: "SET_IS_CART_OPEN",
-  SET_CART_ITEMS: "SET_CART_ITEMS",
-  SET_CART_COUNT: "SET_CART_COUNT",
-  SET_CART_TOTAL: "SET_CART_TOTAL",
+  SET_IS_CART_OPEN: 'SET_IS_CART_OPEN',
+  SET_CART_ITEMS: 'SET_CART_ITEMS',
+  SET_CART_COUNT: 'SET_CART_COUNT',
+  SET_CART_TOTAL: 'SET_CART_TOTAL',
 };
 
 const INITIAL_STATE = {
