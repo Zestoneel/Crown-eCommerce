@@ -6,14 +6,12 @@ import CategoriesPreview from '../cateogories-preview/categories-preview.compone
 import Category from '../category/category.component';
 import { fetchCategoriesStart } from '../../store/categories/categories.action';
 
-import './shop.styles.scss';
-
 const Shop = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchCategoriesStart());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Routes>
