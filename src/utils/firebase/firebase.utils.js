@@ -1,4 +1,4 @@
-import { initializeApp } from 'firebase/app';
+import { initializeApp } from "firebase/app";
 import {
   getAuth,
   signInWithRedirect,
@@ -8,7 +8,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
-} from 'firebase/auth';
+} from "firebase/auth";
 
 import {
   getFirestore,
@@ -20,16 +20,9 @@ import {
   query,
   getDocs,
   DocumentSnapshot,
-} from 'firebase/firestore';
+} from "firebase/firestore";
 
-const firebaseConfig = {
-  apiKey: 'AIzaSyCBPC5CHo1Tm5ZiRBvGNdgUwNhle6WCduo',
-  authDomain: 'crown-clothing-db-89ae8.firebaseapp.com',
-  projectId: 'crown-clothing-db-89ae8',
-  storageBucket: 'crown-clothing-db-89ae8.appspot.com',
-  messagingSenderId: '852619725522',
-  appId: '1:852619725522:web:95a0bdae239036ad40fb0b',
-};
+const firebaseConfig = process.env.REACT_APP_FIREBASE_CONFIG;
 
 // Initialize Firebase
 // eslint-disable-next-line no-unused-vars
@@ -37,7 +30,7 @@ const firebaseApp = initializeApp(firebaseConfig);
 
 const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({
-  prompt: 'select_account',
+  prompt: "select_account",
 });
 
 export const auth = getAuth();
@@ -61,11 +54,11 @@ export const addCollectionAndDocuments = async (
   });
 
   await batch.commit();
-  console.log('done');
+  console.log("done");
 };
 
 export const getCategoriesAndDocuments = async () => {
-  const collectionRef = collection(db, 'categories');
+  const collectionRef = collection(db, "categories");
   const q = query(collectionRef);
 
   const querySnapshot = await getDocs(q);
@@ -78,7 +71,7 @@ export const createUserDocumentFromAuth = async (
 ) => {
   if (!userAuth) return;
 
-  const userDocRef = doc(db, 'users', userAuth.uid);
+  const userDocRef = doc(db, "users", userAuth.uid);
   const userSnapshot = await getDoc(userDocRef);
   if (!userSnapshot.exists()) {
     const { displayName, email } = userAuth;
@@ -92,7 +85,7 @@ export const createUserDocumentFromAuth = async (
         ...additionalInformation,
       });
     } catch (error) {
-      console.log('Error creating the user', error.messaage);
+      console.log("Error creating the user", error.messaage);
     }
   }
 
